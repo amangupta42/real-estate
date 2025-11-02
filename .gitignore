@@ -5,6 +5,8 @@ node_modules/
 
 # Testing
 /coverage
+.nyc_output/
+*.test.js.snap
 
 # Next.js
 /.next/
@@ -30,6 +32,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.example
 
 # Vercel
 .vercel
@@ -53,6 +56,8 @@ sanity/.sanity/
 *.swp
 *.swo
 *~
+.vscode-test/
+*~.nib
 
 # OS
 .DS_Store
@@ -61,3 +66,16 @@ Thumbs.db
 # Logs
 logs/
 *.log
+sanity/package-lock.json
+
+# Documentation (keep locally)
+CLAUDE.md
+DEVELOPMENT_PLAN_DETAILED.md
+development_plan.md
+
+# Temporary files
+*.tmp
+*.temp
+
+# Storybook
+storybook-static/
