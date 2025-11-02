@@ -66,8 +66,11 @@ export interface Testimonial {
   quote: string
   videoUrl?: string
   associatedProject?: {
-    _type: 'reference'
-    _ref: string
+    title: string
+    slug: {
+      _type: 'slug'
+      current: string
+    }
   }
 }
 
