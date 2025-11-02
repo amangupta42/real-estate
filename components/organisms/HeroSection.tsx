@@ -23,8 +23,8 @@ export function HeroSection({
   secondaryCta,
 }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background py-20 md:py-28 lg:py-36">
-      <Container>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/5 to-background py-20 md:py-28 lg:py-36">
+      <Container className="text-center">
         <div className="mx-auto max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

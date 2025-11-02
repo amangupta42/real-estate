@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
+import { Header } from '@/components/organisms/Header'
+import { Footer } from '@/components/organisms/Footer'
+import { WhatsAppButton } from '@/components/molecules/WhatsAppButton'
 import './globals.css'
 
 const inter = Inter({
@@ -30,7 +33,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+        <WhatsAppButton />
+      </body>
     </html>
   )
 }

@@ -72,6 +72,8 @@ sanity/package-lock.json
 CLAUDE.md
 DEVELOPMENT_PLAN_DETAILED.md
 development_plan.md
+SAMPLE_DATA_GUIDE.md
+GOOGLE_MAPS_SETUP.md
 
 # Temporary files
 *.tmp
