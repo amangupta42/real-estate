@@ -1,15 +1,15 @@
 import { cn } from '@/lib/utils'
 import { type VariantProps, cva } from 'class-variance-authority'
 
-const headingVariants = cva('font-serif font-bold text-balance', {
+const headingVariants = cva('font-heading font-bold text-balance tracking-tight', {
   variants: {
     level: {
-      h1: 'text-4xl md:text-5xl lg:text-6xl',
-      h2: 'text-3xl md:text-4xl lg:text-5xl',
-      h3: 'text-2xl md:text-3xl lg:text-4xl',
-      h4: 'text-xl md:text-2xl lg:text-3xl',
-      h5: 'text-lg md:text-xl',
-      h6: 'text-base md:text-lg',
+      h1: 'text-5xl md:text-6xl lg:text-7xl font-bold',
+      h2: 'text-3xl md:text-4xl lg:text-5xl font-semibold',
+      h3: 'text-2xl md:text-3xl lg:text-4xl font-semibold',
+      h4: 'text-xl md:text-2xl font-semibold',
+      h5: 'text-lg md:text-xl font-semibold',
+      h6: 'text-base md:text-lg font-semibold',
     },
     variant: {
       default: 'text-foreground',

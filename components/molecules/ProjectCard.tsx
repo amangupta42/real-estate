@@ -17,9 +17,9 @@ interface ProjectCardProps {
   >
 }
 
-const statusVariants: Record<Project['status'], 'default' | 'secondary' | 'outline'> = {
+const statusVariants: Record<Project['status'], 'default' | 'success' | 'outline'> = {
   Ongoing: 'default',
-  Completed: 'secondary',
+  Completed: 'success',
   Upcoming: 'outline',
 }
 
@@ -30,59 +30,55 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
     >
-      <Link href={`/projects/${project.slug.current}`}>
-        <Card className="group overflow-hidden transition-all hover:shadow-card-hover">
-          <div className="relative aspect-[3/2] overflow-hidden">
+      <Link href={`/projects/${project.slug.current}`} className="block">
+        <Card className="group overflow-hidden cursor-pointer h-full">
+          <div className="relative aspect-[4/3] overflow-hidden bg-muted">
             <Image
               src={imageUrl}
               alt={project.heroImage?.alt || project.title}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-            <div className="absolute right-4 top-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute left-6 top-6">
               <Badge variant={statusVariants[project.status]}>{project.status}</Badge>
             </div>
           </div>
 
-          <CardContent className="p-6">
-            <h3 className="mb-2 text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-              {project.title}
-            </h3>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <h3 className="text-2xl font-heading font-semibold text-foreground transition-colors duration-200 group-hover:text-primary">
+                {project.title}
+              </h3>
 
-            {project.currentPhase && (
-              <p className="mb-3 text-sm text-muted-foreground">{project.currentPhase}</p>
-            )}
+              {project.currentPhase && (
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {project.currentPhase}
+                </p>
+              )}
+            </div>
 
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-6 text-sm text-muted-foreground pt-2">
               {project.location && (
-                <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-primary/60" />
                   <span>Nashik</span>
                 </div>
               )}
               {project.projectSize && (
-                <div className="flex items-center gap-1">
-                  <Maximize2 className="h-4 w-4" />
+                <div className="flex items-center gap-2">
+                  <Maximize2 className="h-4 w-4 text-primary/60" />
                   <span>{project.projectSize}</span>
                 </div>
               )}
             </div>
           </CardContent>
-
-          <CardFooter className="p-6 pt-0">
-            <Button
-              variant="outline"
-              className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-            >
-              View Details
-            </Button>
-          </CardFooter>
         </Card>
       </Link>
     </motion.div>

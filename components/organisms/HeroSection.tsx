@@ -23,47 +23,47 @@ export function HeroSection({
   secondaryCta,
 }: HeroSectionProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/5 to-background py-20 md:py-28 lg:py-36">
-      <Container className="text-center">
-        <div className="mx-auto max-w-3xl text-center">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/[0.03] via-background to-background py-20 md:py-32 lg:py-40">
+      <Container>
+        <div className="mx-auto max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="space-y-8 text-center"
           >
-            <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-primary">
-              {subtitle}
-            </p>
+            <div className="inline-flex items-center justify-center">
+              <span className="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full">
+                {subtitle}
+              </span>
+            </div>
 
-            <Heading as="h1" level="h1" className="mb-6">
+            <Heading as="h1" level="h1" className="leading-tight">
               {title}
             </Heading>
 
             {description && (
-              <p className="mb-8 text-lg text-muted-foreground md:text-xl">{description}</p>
+              <p className="mx-auto max-w-2xl text-xl leading-relaxed text-muted-foreground">
+                {description}
+              </p>
             )}
 
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row sm:gap-6">
               {primaryCta && (
-                <Button asChild size="lg" className="w-full sm:w-auto">
-                  <Link href={primaryCta.href}>
+                <Button asChild size="lg" className="min-w-[200px]">
+                  <Link href={primaryCta.href} className="group">
                     {primaryCta.text}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>
               )}
               {secondaryCta && (
-                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button asChild variant="outline" size="lg" className="min-w-[200px]">
                   <Link href={secondaryCta.href}>{secondaryCta.text}</Link>
                 </Button>
               )}
             </div>
           </motion.div>
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-20">
-          <div className="h-96 w-96 rounded-full bg-primary blur-3xl" />
         </div>
       </Container>
     </section>

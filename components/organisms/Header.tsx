@@ -37,41 +37,50 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all',
-        scrolled && 'shadow-sm'
+        'sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl transition-all duration-300',
+        scrolled && 'border-border shadow-sm bg-background/90'
       )}
     >
       <Container>
-        <nav className="flex h-16 items-center justify-between">
+        <nav className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="font-serif text-2xl font-bold text-primary">RealEstate</span>
+          <Link href="/" className="flex items-center space-x-2 group">
+            <span className="font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-200">
+              RealEstate
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-6 md:flex">
+          <div className="hidden items-center gap-8 md:flex">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  'text-sm font-medium transition-colors hover:text-primary',
-                  pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                  'relative text-sm font-medium transition-colors duration-200 hover:text-primary',
+                  pathname === item.href
+                    ? 'text-primary after:absolute after:bottom-[-8px] after:left-0 after:h-0.5 after:w-full after:bg-primary'
+                    : 'text-muted-foreground'
                 )}
               >
                 {item.name}
               </Link>
             ))}
-            <Button size="sm">Schedule Visit</Button>
+            <Button>Schedule Visit</Button>
           </div>
 
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden"
+            className="md:hidden p-2 -mr-2 rounded-lg hover:bg-muted transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? (
+              <X className="h-5 w-5 text-foreground" />
+            ) : (
+              <Menu className="h-5 w-5 text-foreground" />
+            )}
           </button>
         </nav>
       </Container>
@@ -83,28 +92,30 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden"
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl"
           >
-            <div className="space-y-1 border-t border-border px-4 pb-4 pt-2">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    'block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-muted',
-                    pathname === item.href ? 'bg-muted text-primary' : 'text-muted-foreground'
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="pt-2">
-                <Button className="w-full" size="sm">
-                  Schedule Visit
-                </Button>
+            <Container>
+              <div className="space-y-1 py-4">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={cn(
+                      'block rounded-lg px-4 py-3 text-base font-medium transition-all duration-200',
+                      pathname === item.href
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+                <div className="pt-4">
+                  <Button className="w-full">Schedule Visit</Button>
+                </div>
               </div>
-            </div>
+            </Container>
           </motion.div>
         )}
       </AnimatePresence>

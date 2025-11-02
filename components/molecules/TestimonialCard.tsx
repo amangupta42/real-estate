@@ -12,35 +12,36 @@ interface TestimonialCardProps {
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
     >
-      <Card className="h-full">
-        <CardContent className="p-6">
-          <Quote className="mb-4 h-8 w-8 text-primary opacity-50" />
+      <Card className="h-full bg-muted/30 border-0">
+        <CardContent className="space-y-6">
+          <Quote className="h-10 w-10 text-primary/40" />
 
-          <blockquote className="mb-4 text-lg text-foreground">"{testimonial.quote}"</blockquote>
+          <blockquote className="text-lg leading-relaxed text-foreground/90">
+            "{testimonial.quote}"
+          </blockquote>
 
-          <div className="mt-4 border-t border-border pt-4">
-            <p className="font-semibold text-foreground">{testimonial.clientName}</p>
+          <div className="space-y-1 pt-2">
+            <p className="font-heading font-semibold text-foreground">{testimonial.clientName}</p>
             {testimonial.associatedProject && (
               <p className="text-sm text-muted-foreground">{testimonial.associatedProject.title}</p>
             )}
           </div>
 
           {testimonial.videoUrl && (
-            <div className="mt-4">
-              <a
-                href={testimonial.videoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-primary hover:underline"
-              >
-                Watch Video Testimonial →
-              </a>
-            </div>
+            <a
+              href={testimonial.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-600 transition-colors"
+            >
+              Watch Video Testimonial
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
           )}
         </CardContent>
       </Card>

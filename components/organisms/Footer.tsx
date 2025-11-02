@@ -22,16 +22,18 @@ const navigation = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/30">
+    <footer className="border-t border-border/50 bg-muted/20">
       <Container>
-        <div className="py-12 md:py-16">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="py-16 md:py-20">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
             {/* Brand */}
-            <div>
-              <Link href="/" className="flex items-center space-x-2">
-                <span className="font-serif text-2xl font-bold text-primary">RealEstate</span>
+            <div className="lg:col-span-2 space-y-6">
+              <Link href="/" className="inline-block group">
+                <span className="font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-200">
+                  RealEstate
+                </span>
               </Link>
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="text-base leading-relaxed text-muted-foreground max-w-md">
                 Premium land development opportunities in Nashik and surrounding areas. Building
                 dreams, creating communities.
               </p>
@@ -39,13 +41,15 @@ export function Footer() {
 
             {/* Company Links */}
             <div>
-              <h3 className="mb-4 text-sm font-semibold text-foreground">Company</h3>
-              <ul className="space-y-3">
+              <h3 className="mb-6 text-sm font-heading font-semibold text-foreground uppercase tracking-wider">
+                Company
+              </h3>
+              <ul className="space-y-4">
                 {navigation.company.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                      className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
                     >
                       {item.name}
                     </Link>
@@ -56,13 +60,15 @@ export function Footer() {
 
             {/* Legal Links */}
             <div>
-              <h3 className="mb-4 text-sm font-semibold text-foreground">Legal</h3>
-              <ul className="space-y-3">
+              <h3 className="mb-6 text-sm font-heading font-semibold text-foreground uppercase tracking-wider">
+                Legal
+              </h3>
+              <ul className="space-y-4">
                 {navigation.legal.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                      className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
                     >
                       {item.name}
                     </Link>
@@ -70,22 +76,24 @@ export function Footer() {
                 ))}
               </ul>
             </div>
+          </div>
 
-            {/* Contact */}
-            <div>
-              <h3 className="mb-4 text-sm font-semibold text-foreground">Contact</h3>
-              <ul className="space-y-3">
-                {navigation.contact.map((item) => (
-                  <li key={item.name} className="flex items-start gap-2">
-                    <item.icon className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
-                    <span className="text-sm text-muted-foreground">{item.name}</span>
-                  </li>
-                ))}
-              </ul>
+          {/* Contact Section - Full Width */}
+          <div className="mt-16 pt-12 border-t border-border/50">
+            <h3 className="mb-6 text-sm font-heading font-semibold text-foreground uppercase tracking-wider">
+              Contact
+            </h3>
+            <div className="grid gap-6 sm:grid-cols-3 max-w-3xl">
+              {navigation.contact.map((item) => (
+                <div key={item.name} className="flex items-start gap-3">
+                  <item.icon className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary/60" />
+                  <span className="text-sm text-muted-foreground leading-relaxed">{item.name}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="mt-12 border-t border-border pt-8">
+          <div className="mt-16 pt-8 border-t border-border/50">
             <p className="text-center text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} RealEstate. All rights reserved.
             </p>

@@ -4,29 +4,30 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 25 6% 11%;
+    /* Modern Slate & Teal Palette */
+    --background: 210 40% 98%;
+    --foreground: 217 33% 17%;
     --card: 0 0% 100%;
-    --card-foreground: 25 6% 11%;
+    --card-foreground: 217 33% 17%;
     --popover: 0 0% 100%;
-    --popover-foreground: 25 6% 11%;
-    /* Primary: Blue - Trust & Professionalism */
-    --primary: 199 89% 48%;
+    --popover-foreground: 217 33% 17%;
+    /* Primary: Teal - Modern, Trust & Professional */
+    --primary: 173 77% 40%;
     --primary-foreground: 0 0% 100%;
-    /* Secondary: Green - Growth & Investment */
-    --secondary: 142 71% 45%;
+    /* Secondary: Slate - Sophisticated */
+    --secondary: 215 20% 47%;
     --secondary-foreground: 0 0% 100%;
-    /* Accent: Gold - Premium & Warmth */
-    --accent: 32 95% 44%;
+    /* Accent: Same as primary for consistency */
+    --accent: 173 77% 40%;
     --accent-foreground: 0 0% 100%;
-    --muted: 24 5% 96%;
-    --muted-foreground: 33 5% 45%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 25 5% 90%;
-    --input: 25 5% 90%;
-    --ring: 199 89% 48%;
-    --radius: 0.5rem;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 173 77% 40%;
+    --radius: 1rem;
   }
 
   .dark {
