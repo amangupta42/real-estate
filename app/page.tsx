@@ -15,7 +15,7 @@ import Link from 'next/link'
 import { Building2, Shield, Wallet, MapPin, Clock, Award } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Home',
+  title: 'Ajit J Gupta',
   description:
     'Discover premium RERA-certified land development projects in Nashik. Invest in your future with prime locations, flexible payments, and quality infrastructure.',
   openGraph: {
