@@ -3,6 +3,8 @@ import { Inter, Manrope } from 'next/font/google'
 import { Header } from '@/components/organisms/Header'
 import { Footer } from '@/components/organisms/Footer'
 import { WhatsAppButton } from '@/components/molecules/WhatsAppButton'
+import { Analytics } from '@vercel/analytics/react'
+
 import './globals.css'
 
 const inter = Inter({

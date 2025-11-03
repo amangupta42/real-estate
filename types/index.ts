@@ -40,21 +40,23 @@ export interface Project {
   location: SanityGeopoint
   projectSize: string
   reraNumber: string
-  plotSizesAvailable: string
+  plotSizesAvailable: string[]
   currentPhase: string
   heroImage: SanityImage
   gallery?: SanityImage[]
   droneVideoUrl?: string
   layoutPlanImage?: SanityImage
   brochureFile?: SanityFile
-  locationalBenefits?: any // Portable Text
+  locationalBenefits?: string[]
   suitabilityDescription?: any // Portable Text
-  interactiveLayoutData?: {
-    plots: Array<{
-      plotNumber: string
-      status: 'Available' | 'Sold' | 'Reserved'
-    }>
-  }
+  interactiveLayoutData?: Array<{
+    plotNumber: string
+    size: string
+    status: 'Available' | 'Sold' | 'Reserved'
+    price?: string
+    x: number // Percentage from left
+    y: number // Percentage from top
+  }>
 }
 
 // Testimonial Types

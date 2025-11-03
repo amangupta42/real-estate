@@ -44,10 +44,26 @@ export function Header() {
       <Container>
         <nav className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <span className="font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-200">
-              RealEstate
-            </span>
+          <Link href="/" className="flex items-center gap-3 group">
+            {/* Animated Text */}
+            <div className="flex flex-col">
+              <motion.span
+                className="font-heading text-xl font-bold leading-tight text-foreground group-hover:text-primary transition-colors duration-300"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                Ajit J Gupta
+              </motion.span>
+              <motion.span
+                className="text-xs font-medium tracking-wider text-muted-foreground/60 group-hover:text-primary/70 transition-colors duration-300"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                and Associates
+              </motion.span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

@@ -48,6 +48,18 @@ export const projectQuery = `*[_type == "project" && slug.current == $slug][0] {
 // All project slugs (for generateStaticParams)
 export const projectSlugsQuery = `*[_type == "project"].slug.current`
 
+// Related projects query (same status, exclude current)
+export const relatedProjectsQuery = `*[_type == "project" && status == $status && slug.current != $slug] | order(_createdAt desc) [0..2] {
+  _id,
+  title,
+  slug,
+  status,
+  location,
+  projectSize,
+  heroImage,
+  currentPhase
+}`
+
 // Testimonials query
 export const testimonialsQuery = `*[_type == "testimonial"] | order(_createdAt desc) {
   _id,

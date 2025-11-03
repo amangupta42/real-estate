@@ -7,17 +7,21 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { CheckCircle2 } from 'lucide-react'
 
-const contactSchema = z.object({
+const inquirySchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().min(10, 'Please enter a valid phone number'),
-  subject: z.string().min(5, 'Subject must be at least 5 characters'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
+  projectName: z.string(),
 })
 
-type ContactFormData = z.infer<typeof contactSchema>
+type InquiryFormData = z.infer<typeof inquirySchema>
 
-export function ContactForm() {
+interface ProjectInquiryFormProps {
+  projectName: string
+}
+
+export function ProjectInquiryForm({ projectName }: ProjectInquiryFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
@@ -26,15 +30,18 @@ export function ContactForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
+  } = useForm<InquiryFormData>({
+    resolver: zodResolver(inquirySchema),
+    defaultValues: {
+      projectName,
+    },
   })
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async (data: InquiryFormData) => {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/inquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,11 +54,11 @@ export function ContactForm() {
         reset()
         setTimeout(() => setIsSuccess(false), 5000)
       } else {
-        throw new Error('Failed to submit contact form')
+        throw new Error('Failed to submit inquiry')
       }
     } catch (error) {
-      console.error('Error submitting contact form:', error)
-      alert('Failed to submit form. Please try again or contact us directly.')
+      console.error('Error submitting inquiry:', error)
+      alert('Failed to submit inquiry. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -62,10 +69,10 @@ export function ContactForm() {
       <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-8 text-center">
         <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-emerald-600" />
         <h3 className="mb-2 text-xl font-heading font-semibold text-emerald-900">
-          Message Sent Successfully!
+          Thank you for your inquiry!
         </h3>
         <p className="text-emerald-700">
-          Thank you for reaching out. We'll get back to you within 24 hours.
+          We'll get back to you within 24 hours to discuss {projectName}.
         </p>
       </div>
     )
@@ -105,38 +112,19 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        {/* Phone */}
-        <div>
-          <label htmlFor="phone" className="mb-2 block text-sm font-medium text-foreground">
-            Phone Number *
-          </label>
-          <input
-            id="phone"
-            type="tel"
-            {...register('phone')}
-            className="w-full rounded-lg border border-border/50 bg-background px-4 py-3 text-sm transition-colors placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-            placeholder="+91 98765 43210"
-          />
-          {errors.phone && <p className="mt-1 text-sm text-destructive">{errors.phone.message}</p>}
-        </div>
-
-        {/* Subject */}
-        <div>
-          <label htmlFor="subject" className="mb-2 block text-sm font-medium text-foreground">
-            Subject *
-          </label>
-          <input
-            id="subject"
-            type="text"
-            {...register('subject')}
-            className="w-full rounded-lg border border-border/50 bg-background px-4 py-3 text-sm transition-colors placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-            placeholder="Project Inquiry"
-          />
-          {errors.subject && (
-            <p className="mt-1 text-sm text-destructive">{errors.subject.message}</p>
-          )}
-        </div>
+      {/* Phone */}
+      <div>
+        <label htmlFor="phone" className="mb-2 block text-sm font-medium text-foreground">
+          Phone Number *
+        </label>
+        <input
+          id="phone"
+          type="tel"
+          {...register('phone')}
+          className="w-full rounded-lg border border-border/50 bg-background px-4 py-3 text-sm transition-colors placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          placeholder="+91 98765 43210"
+        />
+        {errors.phone && <p className="mt-1 text-sm text-destructive">{errors.phone.message}</p>}
       </div>
 
       {/* Message */}
@@ -147,18 +135,21 @@ export function ContactForm() {
         <textarea
           id="message"
           {...register('message')}
-          rows={6}
+          rows={5}
           className="w-full rounded-lg border border-border/50 bg-background px-4 py-3 text-sm transition-colors placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-          placeholder="Tell us about your requirements..."
+          placeholder={`I'm interested in ${projectName}. Please provide more information about...`}
         />
         {errors.message && (
           <p className="mt-1 text-sm text-destructive">{errors.message.message}</p>
         )}
       </div>
 
+      {/* Hidden field for project name */}
+      <input type="hidden" {...register('projectName')} />
+
       {/* Submit Button */}
       <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+        {isSubmitting ? 'Sending...' : 'Send Inquiry'}
       </Button>
 
       <p className="text-center text-xs text-muted-foreground">

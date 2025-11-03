@@ -65,8 +65,9 @@ export default defineType({
     defineField({
       name: 'plotSizesAvailable',
       title: 'Plot Sizes Available',
-      type: 'string',
-      description: 'e.g., "1200-2500 sq ft"',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'e.g., ["1200 sq ft", "1500 sq ft", "2000 sq ft"]',
     }),
     defineField({
       name: 'currentPhase',
@@ -144,7 +145,8 @@ export default defineType({
       name: 'locationalBenefits',
       title: 'Locational Benefits',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{ type: 'string' }],
+      description: 'List of key locational benefits (e.g., "Near Highway", "Close to IT Park")',
     }),
     defineField({
       name: 'suitabilityDescription',

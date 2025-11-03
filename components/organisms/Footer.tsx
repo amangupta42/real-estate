@@ -15,8 +15,8 @@ const navigation = {
   ],
   contact: [
     { name: 'Nashik, Maharashtra, India', icon: MapPin },
-    { name: '+91 XXXXX XXXXX', icon: Phone },
-    { name: 'info@realestate.com', icon: Mail },
+    { name: '+91 9371410666', icon: Phone },
+    { name: 'info@ajitjgupta.com', icon: Mail },
   ],
 }
 
@@ -28,10 +28,16 @@ export function Footer() {
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
             {/* Brand */}
             <div className="lg:col-span-2 space-y-6">
-              <Link href="/" className="inline-block group">
-                <span className="font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-200">
-                  RealEstate
-                </span>
+              <Link href="/" className="inline-flex items-center gap-3 group">
+                {/* Text */}
+                <div className="flex flex-col">
+                  <span className="font-heading text-xl font-bold leading-tight text-foreground group-hover:text-primary transition-colors duration-300">
+                    Ajit J Gupta
+                  </span>
+                  <span className="text-xs font-medium tracking-wider text-muted-foreground/60 group-hover:text-primary/70 transition-colors duration-300">
+                    and Associates
+                  </span>
+                </div>
               </Link>
               <p className="text-base leading-relaxed text-muted-foreground max-w-md">
                 Premium land development opportunities in Nashik and surrounding areas. Building
@@ -95,7 +101,7 @@ export function Footer() {
 
           <div className="mt-16 pt-8 border-t border-border/50">
             <p className="text-center text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} RealEstate. All rights reserved.
+              &copy; {new Date().getFullYear()} Ajit J Gupta and Associates. All rights reserved.
             </p>
           </div>
         </div>

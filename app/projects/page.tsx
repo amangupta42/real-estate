@@ -1,0 +1,61 @@
+import { Suspense } from 'react'
+import { Container } from '@/components/layout/Container'
+import { Heading } from '@/components/atomic/Heading'
+import { ProjectsClient } from '@/components/organisms/ProjectsClient'
+import { client } from '@/lib/sanity'
+import { allProjectsQuery } from '@/lib/queries'
+import type { Project } from '@/types'
+import { Metadata } from 'next'
+
+type ProjectPreview = Pick<
+  Project,
+  '_id' | 'title' | 'slug' | 'status' | 'location' | 'projectSize' | 'heroImage' | 'currentPhase'
+>
+
+export const metadata: Metadata = {
+  title: 'Our Projects | Real Estate',
+  description:
+    'Explore premium land development opportunities across Nashik and surrounding areas. Each project is carefully planned to create lasting value.',
+}
+
+function ProjectsLoading() {
+  return (
+    <div className="min-h-screen py-20">
+      <Container>
+        <div className="flex items-center justify-center py-20">
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+        </div>
+      </Container>
+    </div>
+  )
+}
+
+export default async function ProjectsPage() {
+  // Fetch projects on the server
+  const projects = await client.fetch<ProjectPreview[]>(allProjectsQuery).catch(() => [])
+
+  return (
+    <Suspense fallback={<ProjectsLoading />}>
+      <div className="min-h-screen py-20 md:py-28">
+        <Container>
+          {/* Page Header */}
+          <div className="mb-12 text-center">
+            <span className="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full">
+              Our Portfolio
+            </span>
+            <Heading as="h1" level="h1" className="mt-6 mb-4">
+              Explore Our Projects
+            </Heading>
+            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+              Discover premium land development opportunities across Nashik and surrounding areas.
+              Each project is carefully planned to create lasting value.
+            </p>
+          </div>
+
+          {/* Projects Client Component */}
+          <ProjectsClient projects={projects} />
+        </Container>
+      </div>
+    </Suspense>
+  )
+}

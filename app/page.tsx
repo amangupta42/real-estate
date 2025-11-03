@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     'Discover premium RERA-certified land development projects in Nashik. Invest in your future with prime locations, flexible payments, and quality infrastructure.',
   openGraph: {
-    title: 'RealEstate - Premium Land Development in Nashik',
+    title: 'Ajit J Gupta and Associates - Premium Land Development in Nashik',
     description:
       'Explore top-rated land development opportunities in Nashik with RERA certification and excellent connectivity.',
     type: 'website',

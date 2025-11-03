@@ -11,8 +11,8 @@ interface WhatsAppButtonProps {
 }
 
 export function WhatsAppButton({
-  phoneNumber = '919999999999', // Replace with actual number
-  message = 'Hello! I am interested in your real estate projects.',
+  phoneNumber = '919371410666', // Replace with actual number
+  message = 'Hello! I am interested in your land development projects.',
 }: WhatsAppButtonProps) {
   const [isVisible, setIsVisible] = useState(true)
   const [isExpanded, setIsExpanded] = useState(false)
