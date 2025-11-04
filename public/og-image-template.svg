@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Brand Section (Left) -->
+  <g>
+    <!-- AG Monogram Circle -->
+    <circle cx="200" cy="315" r="100" fill="#14b8a6"/>
+    <text x="200" y="355" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">AG</text>
+  </g>
+
+  <!-- Content Section (Right) -->
+  <g>
+    <!-- Company Name -->
+    <text x="350" y="250" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#1e293b">
+      Ajit J Gupta and Associates
+    </text>
+
+    <!-- Tagline -->
+    <text x="350" y="310" font-family="Arial, sans-serif" font-size="32" font-weight="600" fill="#14b8a6">
+      Premium Land Development in Nashik
+    </text>
+
+    <!-- Key Points -->
+    <text x="370" y="380" font-family="Arial, sans-serif" font-size="24" fill="#475569">
+      • RERA Certified Projects
+    </text>
+    <text x="370" y="425" font-family="Arial, sans-serif" font-size="24" fill="#475569">
+      • 7.2% ROI - Maharashtra's Best
+    </text>
+    <text x="370" y="470" font-family="Arial, sans-serif" font-size="24" fill="#475569">
+      • Prime Locations near Mumbai-Nagpur Expressway
+    </text>
+
+    <!-- Website URL -->
+    <text x="350" y="550" font-family="Arial, sans-serif" font-size="20" fill="#64748b">
+      ajitjgupta.com
+    </text>
+  </g>
+
+  <!-- Bottom Border Accent -->
+  <rect x="0" y="620" width="1200" height="10" fill="#14b8a6"/>
+</svg>

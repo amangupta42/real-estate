@@ -5,17 +5,28 @@ import { ContactForm } from '@/components/molecules/ContactForm'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact Us - Ajit J Gupta and Associates',
   description:
-    "Get in touch with us for any inquiries about our land development projects in Nashik. We're here to help you find your perfect investment.",
+    "Get in touch with us for inquiries about RERA-certified land development projects in Nashik. Call +91 9371410666 or visit our office in Nashik, Maharashtra. We're here to help you find your perfect land investment with expert guidance on plot selection, financing, and legal documentation.",
   openGraph: {
     title: 'Contact Us - Ajit J Gupta and Associates',
     description:
-      "Get in touch with us for any inquiries about our land development projects in Nashik. We're here to help you find your perfect investment.",
+      'Contact us for RERA-certified land development projects in Nashik. Call +91 9371410666 or email info@ajitjgupta.com. Expert guidance on plot selection and financing.',
     type: 'website',
     locale: 'en_IN',
+    url: 'https://ajitjgupta.com/contact',
   },
-  keywords: ['Contact Us', 'Land Development', 'Nashik', 'RERA'],
+  keywords: [
+    'Contact Ajit J Gupta',
+    'Nashik land developer contact',
+    'RERA certified projects contact',
+    'land investment inquiry Nashik',
+    'plot booking Nashik',
+    'real estate contact Nashik',
+  ],
+  alternates: {
+    canonical: 'https://ajitjgupta.com/contact',
+  },
 }
 
 const contactInfo = [

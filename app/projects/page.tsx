@@ -13,9 +13,32 @@ type ProjectPreview = Pick<
 >
 
 export const metadata: Metadata = {
-  title: 'Our Projects',
+  title: 'Our Projects - RERA Certified Land Development in Nashik',
   description:
-    'Explore premium land development opportunities across Nashik and surrounding areas. Each project is carefully planned to create lasting value.',
+    'Explore premium RERA-certified land development opportunities across Nashik and surrounding areas. Browse ongoing, completed, and upcoming residential and commercial plot projects with complete infrastructure, strategic locations near Mumbai-Nagpur Expressway, and flexible payment plans. Each project is carefully planned to create lasting value.',
+  openGraph: {
+    title: 'Our Projects - RERA Certified Land Development in Nashik',
+    description:
+      'Browse ongoing, completed, and upcoming RERA-certified land development projects in Nashik. Prime locations, complete infrastructure, and flexible payment options.',
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://ajitjgupta.com/projects',
+  },
+  keywords: [
+    'Nashik land projects',
+    'RERA certified projects Nashik',
+    'ongoing projects Nashik',
+    'completed projects Nashik',
+    'upcoming projects Nashik',
+    'residential plots Nashik',
+    'commercial plots Nashik',
+    'land development Nashik',
+    'plots for sale Nashik',
+    'investment plots Nashik',
+  ],
+  alternates: {
+    canonical: 'https://ajitjgupta.com/projects',
+  },
 }
 
 function ProjectsLoading() {

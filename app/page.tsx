@@ -5,7 +5,10 @@ import { Section } from '@/components/layout/Section'
 import { Heading } from '@/components/atomic/Heading'
 import { ProjectCard } from '@/components/molecules/ProjectCard'
 import { TestimonialCard } from '@/components/molecules/TestimonialCard'
-import { OrganizationStructuredData } from '@/components/molecules/StructuredData'
+import {
+  OrganizationStructuredData,
+  LocalBusinessStructuredData,
+} from '@/components/molecules/StructuredData'
 import { Button } from '@/components/ui/button'
 import { client } from '@/lib/sanity'
 import { featuredProjectsQuery, testimonialsQuery } from '@/lib/queries'
@@ -15,23 +18,35 @@ import Link from 'next/link'
 import { Building2, Shield, Wallet, MapPin, Clock, Award } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Ajit J Gupta',
+  title: 'Ajit J Gupta and Associates - Premium Land Development in Nashik',
   description:
-    'Discover premium RERA-certified land development projects in Nashik. Invest in your future with prime locations, flexible payments, and quality infrastructure.',
+    "Discover premium RERA-certified land development projects in Nashik with 7.2% ROI. Invest in prime residential and commercial plots near Mumbai-Nagpur Expressway with complete infrastructure, flexible payment plans, and clear titles. Maharashtra's 3rd largest industrial hub.",
   openGraph: {
     title: 'Ajit J Gupta and Associates - Premium Land Development in Nashik',
     description:
-      'Explore top-rated land development opportunities in Nashik with RERA certification and excellent connectivity.',
+      'Explore top-rated RERA-certified land development opportunities in Nashik with 7.2% ROI. Prime locations near Mumbai-Nagpur Expressway, complete infrastructure, and flexible financing options.',
     type: 'website',
     locale: 'en_IN',
+    url: 'https://ajitjgupta.com',
   },
   keywords: [
     'Nashik real estate',
     'land development Nashik',
-    'RERA certified plots',
+    'RERA certified plots Nashik',
     'residential plots Nashik',
-    'investment property',
+    'commercial plots Nashik',
+    'investment property Nashik',
+    'Mumbai-Nagpur Expressway plots',
+    'Nashik land investment',
+    'plots near MIDC Nashik',
+    'Nashik property ROI',
+    'Ajit J Gupta',
+    'land for sale Nashik',
+    'plots with infrastructure Nashik',
   ],
+  alternates: {
+    canonical: 'https://ajitjgupta.com',
+  },
 }
 
 // Fetch data on the server
@@ -136,6 +151,7 @@ export default function HomePage() {
   return (
     <>
       <OrganizationStructuredData />
+      <LocalBusinessStructuredData />
 
       {/* Hero Section */}
       <HeroSection

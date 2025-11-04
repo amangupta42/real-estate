@@ -7,6 +7,7 @@ const navigation = {
     { name: 'About Us', href: '/legacy' },
     { name: 'Our Projects', href: '/projects' },
     { name: 'Nashik Advantage', href: '/nashik-advantage' },
+    { name: 'FAQ', href: '/faq' },
   ],
   legal: [
     { name: 'Privacy Policy', href: '/privacy' },

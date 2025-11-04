@@ -2,11 +2,12 @@ export function OrganizationStructuredData() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
-    name: 'RealEstate',
+    name: 'Ajit J Gupta and Associates',
     description:
       'Premium land development opportunities in Nashik and surrounding areas with RERA certification.',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com',
-    telephone: '+91-XXXXX-XXXXX',
+    url: 'https://ajitjgupta.com',
+    telephone: '+91 9371410666',
+    email: 'info@ajitjgupta.com',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Nashik',
@@ -18,6 +19,62 @@ export function OrganizationStructuredData() {
       name: 'Nashik',
     },
     priceRange: '$$',
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  )
+}
+
+export function LocalBusinessStructuredData() {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateAgent',
+    '@id': 'https://ajitjgupta.com',
+    name: 'Ajit J Gupta and Associates',
+    image: 'https://ajitjgupta.com/og-default.png',
+    description:
+      'Premium RERA-certified land development company in Nashik offering prime plots with excellent connectivity and modern infrastructure.',
+    url: 'https://ajitjgupta.com',
+    telephone: '+91 9371410666',
+    email: 'info@ajitjgupta.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Nashik',
+      addressLocality: 'Nashik',
+      addressRegion: 'Maharashtra',
+      postalCode: '422001',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 19.9975,
+      longitude: 73.7898,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
+    priceRange: '$$',
+    areaServed: [
+      {
+        '@type': 'City',
+        name: 'Nashik',
+      },
+      {
+        '@type': 'State',
+        name: 'Maharashtra',
+      },
+    ],
+    paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer', 'EMI'],
+    currenciesAccepted: 'INR',
   }
 
   return (
