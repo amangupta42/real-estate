@@ -5,9 +5,17 @@ import { ContactForm } from '@/components/molecules/ContactForm'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Real Estate',
+  title: 'Contact Us',
   description:
     "Get in touch with us for any inquiries about our land development projects in Nashik. We're here to help you find your perfect investment.",
+  openGraph: {
+    title: 'Contact Us - Ajit J Gupta and Associates',
+    description:
+      "Get in touch with us for any inquiries about our land development projects in Nashik. We're here to help you find your perfect investment.",
+    type: 'website',
+    locale: 'en_IN',
+  },
+  keywords: ['Contact Us', 'Land Development', 'Nashik', 'RERA'],
 }
 
 const contactInfo = [

@@ -4,6 +4,7 @@ import { Header } from '@/components/organisms/Header'
 import { Footer } from '@/components/organisms/Footer'
 import { WhatsAppButton } from '@/components/molecules/WhatsAppButton'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import './globals.css'
 
@@ -22,11 +23,35 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Real Estate - Premium Land Development',
-    template: '%s | Real Estate',
+    default: 'Ajit J Gupta and Associates - Premium Land Development',
+    template: '%s | Ajit J Gupta and Associates',
   },
   description: 'Discover premium land development opportunities in Nashik and surrounding areas',
-  keywords: ['real estate', 'land development', 'property', 'investment', 'Nashik'],
+  keywords: [
+    'Ajit J Gupta and Associates',
+    'Land Development',
+    'Property',
+    'Investment',
+    'Nashik',
+    'RERA',
+  ],
+  openGraph: {
+    title: 'Ajit J Gupta and Associates - Premium Land Development',
+    description: 'Discover premium land development opportunities in Nashik and surrounding areas',
+    type: 'website',
+    locale: 'en_IN',
+  },
+  alternates: {
+    canonical: 'https://ajitjgupta.com',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
+  manifest: '/site.webmanifest',
 }
 
 export default function RootLayout({
@@ -41,6 +66,8 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

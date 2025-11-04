@@ -16,31 +16,55 @@ export async function POST(request: Request) {
     // Validate the request body
     const validatedData = contactSchema.parse(body)
 
-    // TODO: Send email using Resend
-    // For now, just log the data
     console.log('Contact form submission:', validatedData)
 
-    // Uncomment and configure when ready to use Resend:
-
+    // Send email using Resend
     const { Resend } = require('resend')
     const resend = new Resend(process.env.RESEND_API_KEY)
 
-    await resend.emails.send({
-      from: 'noreply@yourdomain.com',
-      to: 'info@realestate.com',
-      subject: `Contact Form: ${validatedData.subject}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${validatedData.name}</p>
-        <p><strong>Email:</strong> ${validatedData.email}</p>
-        <p><strong>Phone:</strong> ${validatedData.phone}</p>
-        <p><strong>Subject:</strong> ${validatedData.subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${validatedData.message}</p>
-      `,
-    })
+    try {
+      const emailResponse = await resend.emails.send({
+        from: 'onboarding@resend.dev', // Use Resend's test domain or replace with your verified domain
+        to: 'amanagupta404@gmail.com',
+        replyTo: validatedData.email,
+        subject: `Contact Form: ${validatedData.subject}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${validatedData.name}</p>
+          <p><strong>Email:</strong> ${validatedData.email}</p>
+          <p><strong>Phone:</strong> ${validatedData.phone}</p>
+          <p><strong>Subject:</strong> ${validatedData.subject}</p>
+          <p><strong>Message:</strong></p>
+          <p>${validatedData.message}</p>
+        `,
+      })
 
-    return NextResponse.json({ message: 'Contact form submitted successfully' }, { status: 200 })
+      console.log('✅ Email sent successfully:', emailResponse)
+
+      return NextResponse.json(
+        {
+          message: 'Contact form submitted successfully',
+          emailId: emailResponse.data?.id,
+        },
+        { status: 200 }
+      )
+    } catch (emailError: any) {
+      console.error('❌ Resend email error:', {
+        message: emailError.message,
+        statusCode: emailError.statusCode,
+        name: emailError.name,
+        fullError: emailError,
+      })
+
+      // Still return success to user but log the email failure
+      return NextResponse.json(
+        {
+          message: 'Form submitted but email delivery failed. Please contact us directly.',
+          error: emailError.message,
+        },
+        { status: 200 }
+      )
+    }
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(

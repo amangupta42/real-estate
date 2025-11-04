@@ -10,9 +10,20 @@ import Link from 'next/link'
 import { MapPin, TrendingUp, Building2, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Nashik Advantage - Why Invest Here | Real Estate',
+  title: 'Nashik Advantage - Why Invest Here',
   description:
     "Discover why Nashik is one of India's fastest-growing real estate markets. Explore neighborhoods, amenities, and investment opportunities.",
+  openGraph: {
+    title: 'Nashik Advantage - Why Invest Here',
+    description:
+      "Discover why Nashik is one of India's fastest-growing real estate markets. Explore neighborhoods, amenities, and investment opportunities.",
+    type: 'website',
+    locale: 'en_IN',
+  },
+  keywords: ['Nashik Advantage', 'Why Invest Here', 'Land Development', 'Nashik', 'RERA'],
+  alternates: {
+    canonical: 'https://ajitjgupta.com/nashik-advantage',
+  },
 }
 
 const advantages = [

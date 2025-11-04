@@ -41,10 +41,30 @@ export async function generateMetadata({ params }: NeighborhoodPageProps): Promi
   }
 
   return {
-    title: `${neighborhood.name} - Nashik Advantage | Real Estate`,
+    title: `${neighborhood.name} - Nashik Advantage`,
     description:
       neighborhood.overview?.[0]?.children?.[0]?.text ||
       `Explore ${neighborhood.name} in Nashik - amenities, connectivity, and nearby facilities`,
+    openGraph: {
+      title: `${neighborhood.name} - Nashik Advantage`,
+      description:
+        neighborhood.overview?.[0]?.children?.[0]?.text ||
+        `Explore ${neighborhood.name} in Nashik - amenities, connectivity, and nearby facilities`,
+      type: 'website',
+      locale: 'en_IN',
+    },
+    keywords: [
+      'Nashik Advantage',
+      'Neighborhood',
+      'Amenities',
+      'Connectivity',
+      'Nearby Facilities',
+      'Nashik',
+      'RERA',
+    ],
+    alternates: {
+      canonical: `https://ajitjgupta.com/nashik-advantage/${params.slug}`,
+    },
   }
 }
 

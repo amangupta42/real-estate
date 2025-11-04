@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const project = await client.fetch<Project>(projectQuery, { slug: params.slug })
-
+  console.log(project)
   if (!project) {
     return {
       title: 'Project Not Found',
@@ -50,10 +50,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 
   return {
-    title: `${project.title} | Real Estate`,
+    title: `${project.title}`,
     description: getDescription(),
     openGraph: {
-      title: project.title,
+      title: `${project.title} - Ajit J Gupta and Associates`,
       description: getDescription(),
       images: project.heroImage
         ? [

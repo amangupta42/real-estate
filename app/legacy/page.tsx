@@ -9,9 +9,20 @@ import type { LegacyPage } from '@/types'
 import { Award, Target, Users, TrendingUp } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Our Legacy - About Us | Real Estate',
+  title: 'Our Legacy - Ajit J Gupta and Associates',
   description:
     'Learn about our journey, mission, and the team behind premium land development in Nashik. Building communities, creating value since inception.',
+  openGraph: {
+    title: 'Our Legacy - Ajit J Gupta and Associates',
+    description:
+      'Learn about our journey, mission, and the team behind premium land development in Nashik. Building communities, creating value since inception.',
+    type: 'website',
+    locale: 'en_IN',
+  },
+  keywords: ['Ajit J Gupta and Associates', 'Our Legacy', 'About Us', 'Land Development', 'Nashik'],
+  alternates: {
+    canonical: 'https://ajitjgupta.com/legacy',
+  },
 }
 
 const values = [

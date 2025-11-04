@@ -13,7 +13,7 @@ type ProjectPreview = Pick<
 >
 
 export const metadata: Metadata = {
-  title: 'Our Projects | Real Estate',
+  title: 'Our Projects',
   description:
     'Explore premium land development opportunities across Nashik and surrounding areas. Each project is carefully planned to create lasting value.',
 }
