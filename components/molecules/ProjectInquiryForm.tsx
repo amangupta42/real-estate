@@ -19,11 +19,34 @@ type InquiryFormData = z.infer<typeof inquirySchema>
 
 interface ProjectInquiryFormProps {
   projectName: string
+  propertyDetails?: {
+    propertyType?: string
+    landCategory?: string
+    totalArea?: string
+    location?: string
+    landUseStatus?: string
+  }
 }
 
-export function ProjectInquiryForm({ projectName }: ProjectInquiryFormProps) {
+export function ProjectInquiryForm({ projectName, propertyDetails }: ProjectInquiryFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+
+  // Generate pre-filled message based on property details
+  const generateDefaultMessage = () => {
+    if (!propertyDetails) {
+      return `I am interested in ${projectName}. Please provide more information.`
+    }
+
+    const details: string[] = []
+    if (propertyDetails.propertyType) details.push(propertyDetails.propertyType)
+    if (propertyDetails.landCategory) details.push(propertyDetails.landCategory)
+    if (propertyDetails.totalArea) details.push(propertyDetails.totalArea)
+    if (propertyDetails.location) details.push(`in ${propertyDetails.location}`)
+    if (propertyDetails.landUseStatus) details.push(`(${propertyDetails.landUseStatus})`)
+
+    return `I am interested in property: ${projectName}${details.length > 0 ? ` - ${details.join(', ')}` : ''}. Please provide more information and schedule a site visit.`
+  }
 
   const {
     register,
@@ -34,6 +57,7 @@ export function ProjectInquiryForm({ projectName }: ProjectInquiryFormProps) {
     resolver: zodResolver(inquirySchema),
     defaultValues: {
       projectName,
+      message: generateDefaultMessage(),
     },
   })
 

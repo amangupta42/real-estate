@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/layout/Container'
 import { MapPin, Maximize2, FileText, Calendar, ArrowLeft } from 'lucide-react'
-import { urlFor } from '@/lib/sanity'
+import { urlFor, fileUrl } from '@/lib/sanity'
 import type { Project } from '@/types'
 
 interface ProjectHeroProps {
@@ -34,6 +34,10 @@ export function ProjectHero({ project }: ProjectHeroProps) {
   const imageUrl = project.heroImage
     ? urlFor(project.heroImage).width(1920).height(1080).url()
     : '/placeholder-project.jpg'
+
+  const brochureUrl = project.brochureFile?.asset?._ref
+    ? fileUrl(project.brochureFile.asset._ref)
+    : null
 
   return (
     <div className="relative min-h-[70vh] flex items-end bg-muted">
@@ -112,14 +116,20 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             <Button size="lg" asChild>
               <a href="#inquiry-form">Schedule a Visit</a>
             </Button>
-            {project.brochureFile && (
+            {brochureUrl && (
               <Button
                 variant="outline"
                 size="lg"
                 asChild
                 className="bg-white/10 hover:bg-white/20 text-white border-white/30"
               >
-                <a href="#" download className="flex items-center gap-2">
+                <a
+                  href={brochureUrl}
+                  download={`${project.title}-Brochure.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
                   <FileText className="h-4 w-4" />
                   Download Brochure
                 </a>

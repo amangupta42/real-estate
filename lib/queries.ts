@@ -6,10 +6,23 @@ export const allProjectsQuery = `*[_type == "project"] | order(_createdAt desc) 
   title,
   slug,
   status,
+  propertyType,
+  landCategory,
   location,
-  projectSize,
+  indianAddress,
+  totalArea,
+  legalDocumentation {
+    landUseStatus,
+    reraRegistered
+  },
   heroImage,
-  currentPhase
+  currentPhase,
+  nearbyLandmarks[] {
+    name,
+    category,
+    distance,
+    significance
+  }
 }`
 
 // Featured projects for homepage (ongoing only, limit 3)
@@ -18,30 +31,129 @@ export const featuredProjectsQuery = `*[_type == "project" && status == "Ongoing
   title,
   slug,
   status,
+  propertyType,
+  landCategory,
   location,
-  projectSize,
+  indianAddress,
+  totalArea,
+  legalDocumentation {
+    landUseStatus,
+    reraRegistered
+  },
   heroImage,
-  currentPhase
+  currentPhase,
+  nearbyLandmarks[] {
+    name,
+    category,
+    distance,
+    significance
+  }
 }`
 
-// Single project query
+// Single project query (comprehensive - for project detail pages)
 export const projectQuery = `*[_type == "project" && slug.current == $slug][0] {
   _id,
+  _createdAt,
+  _updatedAt,
   title,
   slug,
   status,
-  location,
-  projectSize,
-  reraNumber,
-  plotSizesAvailable,
+  propertyType,
+  landCategory,
   currentPhase,
+
+  indianAddress,
+  location,
+
+  legalDocumentation {
+    landUseStatus,
+    surveyNumbers,
+    naSanctionDetails {
+      sanctionedBy,
+      letterNumber,
+      sanctionDate
+    },
+    sanadDetails {
+      issuedBy,
+      issueDate
+    },
+    governmentDuesClearedStatus,
+    reraRegistered,
+    reraNumber,
+    reraWebsiteUrl,
+    conversionPotential
+  },
+  availableDocuments[] {
+    documentName,
+    documentType,
+    description,
+    issueDate
+  },
+
+  totalArea,
+  areaBreakdown[] {
+    areaType,
+    area,
+    description
+  },
+  minimumPlotSize,
+
+  infrastructure {
+    waterSupply {
+      source,
+      pipeSize,
+      connectionStatus,
+      additionalDetails
+    },
+    electricity {
+      connectionStatus,
+      transformerDetails,
+      chargesPaid
+    },
+    roadAccess {
+      mainRoadAccess,
+      roadType,
+      internalRoads,
+      roadWidth
+    },
+    otherUtilities[] {
+      utilityType,
+      status,
+      description
+    }
+  },
+
+  nearbyLandmarks[] {
+    name,
+    category,
+    distance,
+    significance,
+    description
+  },
+  naturalFeatures,
+  vastuFeatures {
+    vastuCompliant,
+    directionFeatures
+  },
+
+  suitabilityDescription,
+  suitabilityTypes,
+  investmentBenefits,
+  developmentRestrictions,
+  expansionOpportunities[] {
+    description,
+    surveyNumber,
+    area,
+    status
+  },
+
   heroImage,
   gallery,
   droneVideoUrl,
+  virtualTourUrl,
   layoutPlanImage,
   brochureFile,
-  locationalBenefits,
-  suitabilityDescription,
+
   interactiveLayoutData
 }`
 
@@ -54,10 +166,23 @@ export const relatedProjectsQuery = `*[_type == "project" && status == $status &
   title,
   slug,
   status,
+  propertyType,
+  landCategory,
   location,
-  projectSize,
+  indianAddress,
+  totalArea,
+  legalDocumentation {
+    landUseStatus,
+    reraRegistered
+  },
   heroImage,
-  currentPhase
+  currentPhase,
+  nearbyLandmarks[] {
+    name,
+    category,
+    distance,
+    significance
+  }
 }`
 
 // Testimonials query

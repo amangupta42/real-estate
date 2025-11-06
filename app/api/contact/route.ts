@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     // Validate the request body
     const validatedData = contactSchema.parse(body)
 
-    console.log('Contact form submission:', validatedData)
+    // console.log('Contact form submission:', validatedData)
 
     // Send email using Resend
     const { Resend } = require('resend')
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
         `,
       })
 
-      console.log('✅ Email sent successfully:', emailResponse)
+      // console.log('✅ Email sent successfully:', emailResponse)
 
       return NextResponse.json(
         {

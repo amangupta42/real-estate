@@ -12,10 +12,15 @@ interface ProjectsGridProps {
       | 'title'
       | 'slug'
       | 'status'
+      | 'propertyType'
+      | 'landCategory'
       | 'location'
-      | 'projectSize'
+      | 'indianAddress'
+      | 'totalArea'
+      | 'legalDocumentation'
       | 'heroImage'
       | 'currentPhase'
+      | 'nearbyLandmarks'
     >
   >
 }

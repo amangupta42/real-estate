@@ -7,9 +7,24 @@ import { allProjectsQuery } from '@/lib/queries'
 import type { Project } from '@/types'
 import { Metadata } from 'next'
 
+// Enable ISR - revalidate every 60 seconds
+export const revalidate = 60
+
 type ProjectPreview = Pick<
   Project,
-  '_id' | 'title' | 'slug' | 'status' | 'location' | 'projectSize' | 'heroImage' | 'currentPhase'
+  | '_id'
+  | 'title'
+  | 'slug'
+  | 'status'
+  | 'propertyType'
+  | 'landCategory'
+  | 'location'
+  | 'indianAddress'
+  | 'totalArea'
+  | 'legalDocumentation'
+  | 'heroImage'
+  | 'currentPhase'
+  | 'nearbyLandmarks'
 >
 
 export const metadata: Metadata = {
@@ -55,7 +70,10 @@ function ProjectsLoading() {
 
 export default async function ProjectsPage() {
   // Fetch projects on the server
-  const projects = await client.fetch<ProjectPreview[]>(allProjectsQuery).catch(() => [])
+  const projects = await client.fetch<ProjectPreview[]>(allProjectsQuery).catch((error) => {
+    console.error('Error fetching projects:', error)
+    return []
+  })
 
   return (
     <Suspense fallback={<ProjectsLoading />}>

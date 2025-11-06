@@ -17,6 +17,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Building2, Shield, Wallet, MapPin, Clock, Award } from 'lucide-react'
 
+// Enable ISR - revalidate every 60 seconds
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Ajit J Gupta and Associates - Premium Land Development in Nashik',
   description:
@@ -53,7 +56,6 @@ export const metadata: Metadata = {
 async function getFeaturedProjects() {
   try {
     const projects = await client.fetch<Project[]>(featuredProjectsQuery)
-    console.log(projects)
     return projects
   } catch (error) {
     console.error('Error fetching projects:', error)
@@ -64,7 +66,6 @@ async function getFeaturedProjects() {
 async function getTestimonials() {
   try {
     const testimonials = await client.fetch<Testimonial[]>(testimonialsQuery)
-    console.log(testimonials)
     return testimonials.slice(0, 3) // Limit to 3 testimonials
   } catch (error) {
     console.error('Error fetching testimonials:', error)
@@ -110,7 +111,6 @@ const features = [
 // Featured Projects Component
 async function FeaturedProjects() {
   const projects = await getFeaturedProjects()
-  console.log(projects)
   if (projects.length === 0) {
     return (
       <div className="text-center py-12">
@@ -133,7 +133,6 @@ async function FeaturedProjects() {
 // Testimonials Component
 async function Testimonials() {
   const testimonials = await getTestimonials()
-  console.log(testimonials)
   if (testimonials.length === 0) {
     return null
   }

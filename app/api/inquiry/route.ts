@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     // Validate the request body
     const validatedData = inquirySchema.parse(body)
 
-    console.log('Project inquiry submission:', validatedData)
+    // console.log('Project inquiry submission:', validatedData)
 
     // Send email using Resend
     const { Resend } = require('resend')
@@ -40,7 +40,7 @@ export async function POST(request: Request) {
         `,
       })
 
-      console.log('✅ Company notification sent:', companyEmailResponse)
+      // console.log('✅ Company notification sent:', companyEmailResponse)
 
       // Send confirmation email to customer
       const customerEmailResponse = await resend.emails.send({
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
         `,
       })
 
-      console.log('✅ Customer confirmation sent:', customerEmailResponse)
+      // console.log('✅ Customer confirmation sent:', customerEmailResponse)
 
       return NextResponse.json(
         {

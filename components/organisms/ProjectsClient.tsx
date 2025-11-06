@@ -7,7 +7,19 @@ import type { Project } from '@/types'
 
 type ProjectPreview = Pick<
   Project,
-  '_id' | 'title' | 'slug' | 'status' | 'location' | 'projectSize' | 'heroImage' | 'currentPhase'
+  | '_id'
+  | 'title'
+  | 'slug'
+  | 'status'
+  | 'propertyType'
+  | 'landCategory'
+  | 'location'
+  | 'indianAddress'
+  | 'totalArea'
+  | 'legalDocumentation'
+  | 'heroImage'
+  | 'currentPhase'
+  | 'nearbyLandmarks'
 >
 
 interface ProjectsClientProps {
@@ -41,8 +53,8 @@ export function ProjectsClient({ projects }: ProjectsClientProps) {
       switch (filters.sort) {
         case 'size':
           filtered.sort((a, b) => {
-            const sizeA = parseFloat(a.projectSize || '0')
-            const sizeB = parseFloat(b.projectSize || '0')
+            const sizeA = a.totalArea?.squareMeters || 0
+            const sizeB = b.totalArea?.squareMeters || 0
             return sizeB - sizeA
           })
           break

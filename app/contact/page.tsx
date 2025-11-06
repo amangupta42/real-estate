@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { Container } from '@/components/layout/Container'
 import { Heading } from '@/components/atomic/Heading'
 import { ContactForm } from '@/components/molecules/ContactForm'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, School, Hotel } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Ajit J Gupta and Associates',
@@ -33,22 +33,25 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Visit Us',
-    details: ['Nashik, Maharashtra', 'India - 422101'],
+    details: [
+      '13 Silver Dale Society, Nashik - Pune Rd, Near St. Xaviers School, Nashik Road, Nashik',
+      'India - 422101',
+    ],
   },
   {
     icon: Phone,
     title: 'Call Us',
-    details: ['+91 9371410666', 'Mon-Sat: 9:00 AM - 6:00 PM'],
+    details: ['+91 9371410666', 'Mon-Sat: 9:00 AM - 5:00 PM'],
   },
   {
     icon: Mail,
     title: 'Email Us',
-    details: ['info@ajitjgupta.com', 'sales@ajitjgupta.com'],
+    details: ['666ajitgupta@gmail.com', 'guptaajit72@gmail.com'],
   },
   {
     icon: Clock,
     title: 'Business Hours',
-    details: ['Monday - Saturday', '9:00 AM - 5:00 PM IST'],
+    details: ['Monday - Saturday', '9:00 AM - 5:00 PM'],
   },
 ]
 
@@ -148,7 +151,10 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-16 border-t border-border/50 bg-muted/20">
+      <section
+        id="contact-form"
+        className="py-16 border-t border-border/50 bg-muted/20 scroll-mt-20"
+      >
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Contact Form */}
@@ -174,7 +180,7 @@ export default function ContactPage() {
               </p>
               <div className="rounded-xl overflow-hidden border border-border/50 h-[600px] bg-muted/30">
                 <iframe
-                  src="https://www.google.com/maps?q=19.9975,73.7898&z=12&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.9809785254024!2d73.81738797620345!3d19.967302181429535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeab7b8f93383%3A0x27258d70ac76469c!2sAjit%20J.%20Gupta%20And%20Associates!5e0!3m2!1sen!2sus!4v1762377903433!5m2!1sen!2sus"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

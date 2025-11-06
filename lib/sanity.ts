@@ -23,3 +23,11 @@ const builder = imageUrlBuilder(client)
 export function urlFor(source: SanityImageSource) {
   return builder.image(source)
 }
+
+// Helper function to get file URL from Sanity
+export function fileUrl(ref: string): string {
+  if (!ref) return ''
+
+  const [_file, id, extension] = ref.split('-')
+  return `https://cdn.sanity.io/files/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${id}.${extension}`
+}

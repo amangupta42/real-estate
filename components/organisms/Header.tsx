@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Container } from '@/components/layout/Container'
 import { Button } from '@/components/ui/button'
+import { Toast, useToast } from '@/components/ui/toast'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -21,6 +22,8 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
+  const { show, message, showToast, hideToast } = useToast()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +36,27 @@ export function Header() {
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [pathname])
+
+  const handleScheduleVisit = () => {
+    // Close mobile menu if open
+    setMobileMenuOpen(false)
+
+    // Check if already on contact page
+    if (pathname === '/contact') {
+      // Scroll to form
+      const formElement = document.getElementById('contact-form')
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        // Show toast after a brief delay to allow scroll to start
+        setTimeout(() => {
+          showToast('Fill out the form below to get in touch with us!')
+        }, 300)
+      }
+    } else {
+      // Navigate to contact page with hash
+      router.push('/contact#contact-form')
+    }
+  }
 
   return (
     <header
@@ -82,7 +106,7 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <Button>Schedule Visit</Button>
+            <Button onClick={handleScheduleVisit}>Schedule Visit</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -128,13 +152,18 @@ export function Header() {
                   </Link>
                 ))}
                 <div className="pt-4">
-                  <Button className="w-full">Schedule Visit</Button>
+                  <Button className="w-full" onClick={handleScheduleVisit}>
+                    Schedule Visit
+                  </Button>
                 </div>
               </div>
             </Container>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Toast Notification */}
+      <Toast show={show} message={message} onClose={hideToast} />
     </header>
   )
 }

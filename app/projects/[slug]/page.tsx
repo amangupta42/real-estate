@@ -2,15 +2,26 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Container } from '@/components/layout/Container'
 import { ProjectHero } from '@/components/organisms/ProjectHero'
-import { ProjectDetails } from '@/components/organisms/ProjectDetails'
+import { ProjectTabs } from '@/components/organisms/ProjectTabs'
 import { InteractiveLayoutPlan } from '@/components/organisms/InteractiveLayoutPlan'
 import { ProjectInquiryForm } from '@/components/molecules/ProjectInquiryForm'
 import { ProjectSchema } from '@/components/molecules/ProjectSchema'
 import { Heading } from '@/components/atomic/Heading'
 import { ProjectCard } from '@/components/molecules/ProjectCard'
+import { Badge } from '@/components/ui/badge'
 import { client } from '@/lib/sanity'
 import { projectQuery, projectSlugsQuery, relatedProjectsQuery } from '@/lib/queries'
 import type { Project } from '@/types'
+import {
+  formatPropertyType,
+  formatLandCategory,
+  formatIndianAddress,
+  formatLandUseStatus,
+} from '@/lib/formatters'
+import { formatMeasurementSmart } from '@/lib/measurements'
+
+// Enable ISR - revalidate every 60 seconds
+export const revalidate = 60
 
 interface ProjectPageProps {
   params: {
@@ -27,7 +38,7 @@ export async function generateStaticParams() {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const project = await client.fetch<Project>(projectQuery, { slug: params.slug })
-  console.log(project)
+  // console.log(project)
   if (!project) {
     return {
       title: 'Project Not Found',
@@ -87,10 +98,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           | 'title'
           | 'slug'
           | 'status'
+          | 'propertyType'
+          | 'landCategory'
           | 'location'
-          | 'projectSize'
+          | 'indianAddress'
+          | 'totalArea'
+          | 'legalDocumentation'
           | 'heroImage'
           | 'currentPhase'
+          | 'nearbyLandmarks'
         >
       >
     >(relatedProjectsQuery, {
@@ -128,20 +144,73 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         }}
       />
 
-      {/* Project Details */}
-      <Container>
-        <ProjectDetails
-          project={{
-            suitabilityDescription: project.suitabilityDescription,
-            locationalBenefits: project.locationalBenefits,
-            location: project.location,
-            gallery: project.gallery,
-            plotSizesAvailable: project.plotSizesAvailable,
-            brochureFile: project.brochureFile,
-            reraNumber: project.reraNumber,
-          }}
-        />
-      </Container>
+      {/* Project Key Info Bar */}
+      <div className="border-b border-border/50 bg-muted/20 py-6">
+        <Container>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {project.propertyType && (
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Property Type</p>
+                <p className="font-semibold text-foreground">
+                  {formatPropertyType(project.propertyType)}
+                </p>
+              </div>
+            )}
+            {project.landCategory && (
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Category</p>
+                <p className="font-semibold text-foreground">
+                  {formatLandCategory(project.landCategory)}
+                </p>
+              </div>
+            )}
+            {project.totalArea && (
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Total Area</p>
+                <p className="font-semibold text-primary">
+                  {formatMeasurementSmart(project.totalArea)}
+                </p>
+              </div>
+            )}
+            {project.indianAddress && (
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Location</p>
+                <p className="font-semibold text-foreground">
+                  {formatIndianAddress(project.indianAddress, { format: 'short' })}
+                </p>
+              </div>
+            )}
+          </div>
+        </Container>
+      </div>
+
+      {/* Project Tabs */}
+      <div className="py-16">
+        <Container>
+          <ProjectTabs
+            project={{
+              suitabilityDescription: project.suitabilityDescription,
+              suitabilityTypes: project.suitabilityTypes,
+              investmentBenefits: project.investmentBenefits,
+              developmentRestrictions: project.developmentRestrictions,
+              totalArea: project.totalArea,
+              areaBreakdown: project.areaBreakdown,
+              minimumPlotSize: project.minimumPlotSize,
+              expansionOpportunities: project.expansionOpportunities,
+              infrastructure: project.infrastructure,
+              legalDocumentation: project.legalDocumentation,
+              availableDocuments: project.availableDocuments,
+              nearbyLandmarks: project.nearbyLandmarks,
+              naturalFeatures: project.naturalFeatures,
+              vastuFeatures: project.vastuFeatures,
+              gallery: project.gallery,
+              droneVideoUrl: project.droneVideoUrl,
+              virtualTourUrl: project.virtualTourUrl,
+              layoutPlanImage: project.layoutPlanImage,
+            }}
+          />
+        </Container>
+      </div>
 
       {/* Interactive Layout Plan */}
       {project.layoutPlanImage && (
@@ -190,7 +259,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </p>
             </div>
             <div className="rounded-xl border border-border/50 bg-background p-8">
-              <ProjectInquiryForm projectName={project.title} />
+              <ProjectInquiryForm
+                projectName={project.title}
+                propertyDetails={{
+                  propertyType: project.propertyType
+                    ? formatPropertyType(project.propertyType)
+                    : undefined,
+                  landCategory: project.landCategory
+                    ? formatLandCategory(project.landCategory)
+                    : undefined,
+                  totalArea: project.totalArea
+                    ? formatMeasurementSmart(project.totalArea)
+                    : undefined,
+                  location: project.indianAddress
+                    ? formatIndianAddress(project.indianAddress, { format: 'short' })
+                    : undefined,
+                  landUseStatus: project.legalDocumentation?.landUseStatus
+                    ? formatLandUseStatus(project.legalDocumentation.landUseStatus, true)
+                    : undefined,
+                }}
+              />
             </div>
           </div>
         </Container>
