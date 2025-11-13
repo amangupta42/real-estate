@@ -1,14 +1,39 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import dynamic from 'next/dynamic'
 import { Container } from '@/components/layout/Container'
 import { ProjectHero } from '@/components/organisms/ProjectHero'
 import { ProjectTabs } from '@/components/organisms/ProjectTabs'
-import { InteractiveLayoutPlan } from '@/components/organisms/InteractiveLayoutPlan'
-import { ProjectInquiryForm } from '@/components/molecules/ProjectInquiryForm'
 import { ProjectSchema } from '@/components/molecules/ProjectSchema'
 import { Heading } from '@/components/atomic/Heading'
 import { ProjectCard } from '@/components/molecules/ProjectCard'
 import { Badge } from '@/components/ui/badge'
+
+// Lazy load heavy components that are below the fold
+const InteractiveLayoutPlan = dynamic(
+  () =>
+    import('@/components/organisms/InteractiveLayoutPlan').then((mod) => mod.InteractiveLayoutPlan),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center h-[600px] rounded-xl border-2 border-dashed border-border/50 bg-muted/20">
+        <p className="text-muted-foreground">Loading interactive layout...</p>
+      </div>
+    ),
+  }
+)
+
+const ProjectInquiryForm = dynamic(
+  () => import('@/components/molecules/ProjectInquiryForm').then((mod) => mod.ProjectInquiryForm),
+  {
+    loading: () => (
+      <div className="animate-pulse space-y-4">
+        <div className="h-12 bg-muted rounded" />
+        <div className="h-12 bg-muted rounded" />
+        <div className="h-32 bg-muted rounded" />
+      </div>
+    ),
+  }
+)
 import { client } from '@/lib/sanity'
 import { projectQuery, projectSlugsQuery, relatedProjectsQuery } from '@/lib/queries'
 import type { Project } from '@/types'

@@ -1,24 +1,26 @@
 import type { Metadata } from 'next'
-import { Inter, Manrope } from 'next/font/google'
+import { Inter } from 'next/font/google'
+import dynamic from 'next/dynamic'
 import { Header } from '@/components/organisms/Header'
 import { Footer } from '@/components/organisms/Footer'
-import { WhatsAppButton } from '@/components/molecules/WhatsAppButton'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import './globals.css'
 
+// Lazy load WhatsAppButton - not critical for initial page load
+const WhatsAppButton = dynamic(
+  () => import('@/components/molecules/WhatsAppButton').then((mod) => mod.WhatsAppButton),
+  { ssr: false }
+)
+
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-})
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-manrope',
-  weight: ['600', '700', '800'],
+  preload: true,
+  // Optimize: Only load necessary weights
+  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -97,7 +99,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+    <html lang="en" className={inter.variable}>
+      <head>
+        {/* Preconnect to Sanity CDN for faster image loading */}
+        <link rel="preconnect" href="https://cdn.sanity.io" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+      </head>
       <body className={inter.className}>
         <Header />
         <main className="min-h-screen">{children}</main>
