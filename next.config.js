@@ -14,6 +14,14 @@ const nextConfig = {
   // Production optimizations
   productionBrowserSourceMaps: false,
   swcMinify: true,
+  // Exclude studio directory from Next.js compilation
+  webpack: (config, { isServer }) => {
+    config.watchOptions = {
+      ...config.watchOptions,
+      ignored: ['**/studio/**', '**/sanity/**', '**/node_modules/**'],
+    }
+    return config
+  },
 }
 
 module.exports = nextConfig
