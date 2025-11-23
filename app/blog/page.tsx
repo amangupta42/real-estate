@@ -141,7 +141,7 @@ export default function BlogPage() {
         <Container>
           <div className="max-w-3xl">
             <Badge className="mb-4">Investment Insights</Badge>
-            <Heading level={1} className="mb-4">
+            <Heading level="h1" className="mb-4">
               Real Estate Investment Blog
             </Heading>
             <p className="text-xl text-muted-foreground">
@@ -228,7 +228,7 @@ export default function BlogPage() {
       <Section className="bg-primary/5">
         <Container>
           <div className="max-w-2xl mx-auto text-center">
-            <Heading level={2} className="mb-4">
+            <Heading level="h2" className="mb-4">
               Stay Updated with Market Insights
             </Heading>
             <p className="text-muted-foreground mb-6">

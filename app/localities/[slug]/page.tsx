@@ -231,7 +231,7 @@ export default function LocalityPage({ params }: { params: { slug: string } }) {
               <MapPin className="w-5 h-5" />
               <span className="font-medium">Nashik, Maharashtra</span>
             </div>
-            <Heading level={1} className="mb-4">
+            <Heading level="h1" className="mb-4">
               Premium Plots for Sale in {locality.name}
             </Heading>
             <p className="text-xl text-muted-foreground mb-6">{locality.description}</p>
@@ -265,7 +265,7 @@ export default function LocalityPage({ params }: { params: { slug: string } }) {
       {/* Key Highlights */}
       <Section>
         <Container>
-          <Heading level={2} className="mb-8">
+          <Heading level="h2" className="mb-8">
             Why Invest in {locality.name}?
           </Heading>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -282,7 +282,7 @@ export default function LocalityPage({ params }: { params: { slug: string } }) {
       {/* Connectivity */}
       <Section className="bg-muted/30">
         <Container>
-          <Heading level={2} className="mb-8">
+          <Heading level="h2" className="mb-8">
             Connectivity & Location
           </Heading>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -299,7 +299,7 @@ export default function LocalityPage({ params }: { params: { slug: string } }) {
       {/* Infrastructure */}
       <Section>
         <Container>
-          <Heading level={2} className="mb-8">
+          <Heading level="h2" className="mb-8">
             Infrastructure & Amenities
           </Heading>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -325,7 +325,7 @@ export default function LocalityPage({ params }: { params: { slug: string } }) {
       <Section className="bg-primary/5">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <Heading level={2} className="mb-6">
+            <Heading level="h2" className="mb-6">
               Investment Opportunity
             </Heading>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -344,7 +344,7 @@ export default function LocalityPage({ params }: { params: { slug: string } }) {
       <Section>
         <Container>
           <div className="bg-gradient-to-r from-primary to-primary/80 text-white rounded-2xl p-8 md:p-12 text-center">
-            <Heading level={2} className="text-white mb-4">
+            <Heading level="h2" className="text-white mb-4">
               Find Your Perfect Plot in {locality.name}
             </Heading>
             <p className="text-lg mb-8 text-white/90">

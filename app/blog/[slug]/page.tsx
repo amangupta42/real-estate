@@ -277,7 +277,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         <Container>
           <article className="max-w-4xl mx-auto">
             <Badge className="mb-4">{post.category}</Badge>
-            <Heading level={1} className="mb-6">
+            <Heading level="h1" className="mb-6">
               {post.title}
             </Heading>
 
