@@ -1,0 +1,148 @@
+{
+  "common": {
+    "learnMore": "Learn More",
+    "viewDetails": "View Details",
+    "contactUs": "Contact Us",
+    "getInTouch": "Get in Touch",
+    "readMore": "Read More",
+    "downloadBrochure": "Download Brochure",
+    "bookNow": "Book Now",
+    "inquireNow": "Inquire Now",
+    "viewAll": "View All",
+    "loading": "Loading...",
+    "submit": "Submit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "apply": "Apply",
+    "reset": "Reset",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About Us",
+    "nashikAdvantage": "Nashik Advantage",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "rera": "RERA Compliance",
+    "legacy": "Our Legacy"
+  },
+  "hero": {
+    "title": "Premium Land Development in Nashik",
+    "subtitle": "RERA-certified plots with 7.2% ROI. Prime locations near Mumbai-Nagpur Expressway.",
+    "cta": "Explore Projects",
+    "ctaSecondary": "Schedule Site Visit"
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Discover premium land development opportunities",
+    "viewProject": "View Project Details",
+    "location": "Location",
+    "size": "Project Size",
+    "status": "Status",
+    "plotSizes": "Plot Sizes Available",
+    "priceRange": "Price Range",
+    "ongoing": "Ongoing",
+    "completed": "Completed",
+    "upcoming": "Upcoming",
+    "filterByStatus": "Filter by Status",
+    "allProjects": "All Projects",
+    "residential": "Residential",
+    "commercial": "Commercial",
+    "agricultural": "Agricultural"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "message": "Your Message",
+    "subject": "Subject",
+    "sendMessage": "Send Message",
+    "success": "Thank you! We'll get back to you soon.",
+    "error": "Something went wrong. Please try again.",
+    "officeAddress": "Office Address",
+    "visitUs": "Visit Us",
+    "callUs": "Call Us",
+    "emailUs": "Email Us"
+  },
+  "footer": {
+    "company": "Company",
+    "quickLinks": "Quick Links",
+    "projects": "Projects",
+    "legal": "Legal",
+    "followUs": "Follow Us",
+    "copyright": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Hear from satisfied landowners about their experience"
+  },
+  "emi": {
+    "title": "EMI Calculator",
+    "plotPrice": "Plot Price",
+    "downPayment": "Down Payment",
+    "interestRate": "Interest Rate",
+    "tenure": "Loan Tenure",
+    "monthlyEmi": "Monthly EMI",
+    "loanAmount": "Loan Amount",
+    "totalInterest": "Total Interest",
+    "totalPayment": "Total Payment",
+    "years": "years",
+    "disclaimer": "* EMI calculations are approximate. Actual rates may vary based on bank policies."
+  },
+  "costCalculator": {
+    "title": "Total Cost Calculator",
+    "stampDuty": "Stamp Duty",
+    "registration": "Registration Fee",
+    "gst": "GST",
+    "legalFees": "Legal Fees",
+    "totalCost": "Total Cost",
+    "additionalCosts": "Additional Costs",
+    "buyerGender": "Buyer Gender",
+    "male": "Male",
+    "female": "Female",
+    "includeGST": "Include GST",
+    "savingsInfo": "You save {amount} with female ownership!",
+    "disclaimer": "* Calculations are approximate. Please verify current rates with local authorities."
+  },
+  "booking": {
+    "title": "Book Your Plot",
+    "subtitle": "Secure your plot with a token amount",
+    "fullName": "Full Name",
+    "email": "Email",
+    "mobile": "Mobile Number",
+    "plotNumber": "Preferred Plot Number",
+    "tokenAmount": "Token Amount",
+    "payNow": "Pay Token Amount",
+    "success": "Booking Successful!",
+    "successMessage": "Thank you for your token payment. Our team will contact you shortly with further details.",
+    "bookAnother": "Book Another Plot",
+    "securePayment": "Secure payment powered by Razorpay. Your payment information is safe and encrypted."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about land investment"
+  },
+  "rera": {
+    "title": "RERA Compliance",
+    "subtitle": "All our projects are RERA certified for your safety and security"
+  },
+  "whatsapp": {
+    "message": "Chat with us on WhatsApp"
+  }
+}
