@@ -13,6 +13,7 @@ export default createMiddleware({
 })
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ['/', '/(hi|mr)/:path*', '/((?!api|_next|_vercel|.*\\..*).*)'],
+  // Temporarily disabled - pages not in [locale] folder structure
+  // To re-enable i18n, restructure app directory: app/[locale]/page.tsx
+  matcher: ['/(hi|mr)/:path*'],
 }
