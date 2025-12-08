@@ -8,8 +8,8 @@ export default defineConfig({
   name: 'default',
   title: 'Real Estate CMS',
 
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID || '',
-  dataset: process.env.SANITY_STUDIO_DATASET || '',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID || 'yfxl4u1h',
+  dataset: process.env.SANITY_STUDIO_DATASET || 'production',
 
   plugins: [
     structureTool(),

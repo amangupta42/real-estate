@@ -1,15 +1,9 @@
 {
   "version": 2,
-  "name": "real-estate-custom-studio",
   "framework": null,
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "outputDirectory": "dist",
-  "regions": ["sin1"],
-  "env": {
-    "SANITY_STUDIO_PROJECT_ID": "@sanity_studio_project_id",
-    "SANITY_STUDIO_DATASET": "@sanity_studio_dataset",
-    "SANITY_STUDIO_GOOGLE_MAPS_API_KEY": "@sanity_studio_google_maps_api_key"
-  }
+  "regions": ["sin1"]
 }

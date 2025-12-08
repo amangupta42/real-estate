@@ -1,3 +1,4 @@
+import React from 'react'
 import { StructureBuilder } from 'sanity/structure'
 import {
   HomeIcon,
@@ -25,8 +26,7 @@ export const deskStructure = (S: StructureBuilder) =>
                 <h1>📊 Dashboard</h1>
                 <p>Welcome to your Real Estate CMS</p>
                 <p style={{ color: '#999', marginTop: '1rem' }}>
-                  Future: Project statistics, recent updates, and quick actions will appear
-                  here
+                  Future: Project statistics, recent updates, and quick actions will appear here
                 </p>
               </div>
             ))
@@ -140,9 +140,7 @@ export const deskStructure = (S: StructureBuilder) =>
             .items([
               S.documentTypeListItem('project').title('Manage Project Schema'),
               S.documentTypeListItem('testimonial').title('Manage Testimonial Schema'),
-              S.documentTypeListItem('neighborhoodGuide').title(
-                'Manage Neighborhood Schema'
-              ),
+              S.documentTypeListItem('neighborhoodGuide').title('Manage Neighborhood Schema'),
             ])
         ),
     ])
