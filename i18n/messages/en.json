@@ -132,7 +132,7 @@
     "success": "Booking Successful!",
     "successMessage": "Thank you for your token payment. Our team will contact you shortly with further details.",
     "bookAnother": "Book Another Plot",
-    "securePayment": "Secure payment powered by Razorpay. Your payment information is safe and encrypted."
+    "securePayment": "Secure payment processing. Your payment information is safe and encrypted."
   },
   "faq": {
     "title": "Frequently Asked Questions",
