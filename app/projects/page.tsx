@@ -70,10 +70,15 @@ function ProjectsLoading() {
 
 export default async function ProjectsPage() {
   // Fetch projects on the server
-  const projects = await client.fetch<ProjectPreview[]>(allProjectsQuery).catch((error) => {
+  const rawProjects = await client.fetch<ProjectPreview[]>(allProjectsQuery).catch((error) => {
     console.error('Error fetching projects:', error)
     return []
   })
+
+  // Filter out projects with null/undefined slugs to prevent render errors
+  const projects = rawProjects.filter(
+    (project) => project.slug && typeof project.slug.current === 'string'
+  )
 
   return (
     <Suspense fallback={<ProjectsLoading />}>

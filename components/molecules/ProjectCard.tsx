@@ -38,6 +38,11 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  // Guard against projects with missing slugs
+  if (!project.slug?.current) {
+    return null
+  }
+
   const imageUrl = project.heroImage
     ? urlFor(project.heroImage).width(600).height(400).url()
     : '/placeholder-project.jpg'
