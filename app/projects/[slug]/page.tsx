@@ -57,7 +57,10 @@ interface ProjectPageProps {
 // Generate static params for all projects
 export async function generateStaticParams() {
   const slugs = await client.fetch<string[]>(projectSlugsQuery)
-  return slugs.map((slug) => ({ slug }))
+  // Filter out any null/undefined values and ensure we only return valid strings
+  return slugs
+    .filter((slug): slug is string => typeof slug === 'string' && slug.length > 0)
+    .map((slug) => ({ slug }))
 }
 
 // Generate metadata for SEO
